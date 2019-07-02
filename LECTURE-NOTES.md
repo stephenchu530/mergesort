@@ -21,7 +21,7 @@ Main Point:
  * Go to the next card and repeat until the end.
 
 ## Diagram
-![Visual Diagrom](mergesort.jpg)
+![Visual Diagrom](MergeSort.jpg)
 
 ## Algorithm
 
