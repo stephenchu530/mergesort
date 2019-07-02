@@ -41,7 +41,7 @@ Ensure the following are installed:
 
 ## Solution / Lecture Notes
 * [Solution Code](src/main/java/mergesort/App.java)
-* [Lecture Nodes](LECTURE-NOTES.md)
+* [Lecture Notes](LECTURE-NOTES.md)
 
 ## Contributors
 * Stephen Chu, [stephenchu530](https://github.com/stephenchu530)
