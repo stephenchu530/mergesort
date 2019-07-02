@@ -3,12 +3,76 @@
  */
 package mergesort;
 
+import java.util.Arrays;
+
+import static java.lang.Integer.parseInt;
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        if (args.length > 0)
+            System.out.println(Arrays.toString(mergeSort(strArrToIntArr(args))));
+        else
+            System.out.println("Please provide some arguments");
+    }
+
+    public static int[] mergeSort(int[] numbers) {
+        int size = numbers.length;
+        int mid = 0;
+        int left[] = new int[]{};
+        int right[] = new int[]{};
+
+        if (numbers.length > 1) {
+            mid = size / 2;
+            left = Arrays.copyOfRange(numbers, 0, mid);
+            right = Arrays.copyOfRange(numbers, mid, size);
+            mergeSort(left);
+            mergeSort(right);
+            numbers = merge(left, right, numbers);
+        }
+        return numbers;
+    }
+
+    public static int[] merge(int[] left, int[] right, int[] numbers) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                numbers[k] = left[i];
+                i++;
+            } else {
+                numbers[k] = right[j];
+                j++;
+            }
+            k++;
+        }
+        if (i == left.length) {
+            while (j < right.length) {
+                numbers[k] = right[j];
+                j++;
+                k++;
+            }
+        } else {
+            while (i < left.length) {
+                numbers[k] = left[i];
+                i++;
+                k++;
+            }
+        }
+        return numbers;
+    }
+
+    public static int[] strArrToIntArr(String[] args) {
+        int numbers[] = new int[args.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = parseInt(args[i]);
+        }
+        return numbers;
     }
 }
